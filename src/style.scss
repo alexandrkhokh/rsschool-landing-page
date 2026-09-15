@@ -1,0 +1,7 @@
+@use 'typography';
+@use 'grid';
+@use 'vars' as *;
+
+body {
+  background: var(--bg-body);
+}

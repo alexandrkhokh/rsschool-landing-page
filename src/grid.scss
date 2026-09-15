@@ -1,0 +1,9 @@
+@use 'vars' as *;
+
+.container {
+  @media(min-width: $xl) {
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
