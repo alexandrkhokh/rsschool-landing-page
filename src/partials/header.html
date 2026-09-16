@@ -1,8 +1,25 @@
 <header>
     <div class="container">
-        <nav>
-            <a href="/" data-page="home">Home</a>
-            <a href="/catalog.html" data-page="catalog">Catalog</a>
-        </nav>
+        <div class="header__wrapper">
+
+            <a class="header__logo-link" href="/">
+                <img src="/logo.svg" alt="Logo">
+            </a>
+
+            <nav>
+                <a href="/" data-page="home">Home</a>
+                <a href="/catalog.html" data-page="catalog">Catalog</a>
+            </nav>
+
+            <button id="header-menu-button-mobile" class="header__menu-button-mobile">
+                <span class="top-line"></span>
+                <span class="bottom-line"></span>
+            </button>
+
+            <button id="header-menu-button-desktop" class="header__menu-button-desktop">
+                Menu <img src="/coffee-cup.svg" alt="">
+            </button>
+
+        </div>
     </div>
 </header>

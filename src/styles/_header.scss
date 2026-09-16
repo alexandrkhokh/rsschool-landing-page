@@ -1,0 +1,75 @@
+@use 'vars' as *;
+@use 'utilities' as *;
+
+header {
+  position: relative;
+  z-index: 100;
+  margin-bottom: 20px;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+}
+
+.header__wrapper {
+  @extend %flex-jcsb-aic;
+}
+
+.header__logo-link {
+  line-height: 0;
+}
+
+nav {
+  display: none;
+  
+  @media (min-width: $xl) {
+    display: flex; 
+    gap: 20px;
+  }
+
+  a {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-block;
+    box-sizing: border-box;
+    padding-bottom: 2px;
+
+    &:hover  {
+      border-bottom: 2px solid var(--text-primary);
+      padding-bottom: 0;
+    }
+  }
+}
+
+.header__menu-button-mobile {
+  border: 2px solid var(--border-dark);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  @extend %flex-center;
+  flex-direction: column;
+  gap: 6px;
+
+  span {
+    display: block;
+    width: 16px;
+    border: 1px solid var(--text-dark);
+  }
+
+  @media (min-width: $xl) {
+    display: none;
+  }
+}
+
+.header__menu-button-desktop {
+  display: none;
+  @media (min-width: $xl) {
+    display: block;
+  }
+}

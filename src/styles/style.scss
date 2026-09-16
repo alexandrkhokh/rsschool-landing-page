@@ -1,7 +1,9 @@
 @use 'typography';
-@use 'grid';
+@use 'grid' as *;
 @use 'vars' as *;
+@use 'header';
 
 body {
+  padding-top: 20px;
   background: var(--bg-body);
 }

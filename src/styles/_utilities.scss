@@ -1,0 +1,24 @@
+%flex {
+  display: flex;
+}
+
+%flex-jc-center {
+  @extend %flex;
+  justify-content: center;
+}
+
+%flex-aic {
+  @extend %flex;
+  align-items: center;
+}
+
+%flex-center {
+  @extend %flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-jcsb-aic {
+  @extend %flex-aic;
+  justify-content: space-between;
+}
