@@ -5,10 +5,19 @@
     <title>Coffee Shop Main Page</title>
 </head>
 <body>
-<!--@include: src/partials/header.html?active=home-->
+<!--@include: src/partials/header.html-->
 
 <div class="container">
-    <h1>Coffee shop</h1>
+    <section id="hero">
+        <h1>
+            <div class="accent">Enjoy</div> premium coffee at our charming cafe
+        </h1>
+
+        <div class="hero__desc">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</div>
+        <button id="hero-menu-button" class="button-primary">
+            Menu <img src="/coffee-cup.svg" alt="Cup">
+        </button>
+    </section>
 </div>
 
 <!--@include: src/partials/footer.html-->

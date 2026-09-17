@@ -29,21 +29,18 @@ nav {
   display: none;
   
   @media (min-width: $xl) {
-    display: flex; 
-    gap: 20px;
+    display: block;
+
+    ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
   }
 
   a {
     color: var(--text-primary);
-    text-decoration: none;
-    display: inline-block;
-    box-sizing: border-box;
-    padding-bottom: 2px;
-
-    &:hover  {
-      border-bottom: 2px solid var(--text-primary);
-      padding-bottom: 0;
-    }
+    @extend %link-underline;
   }
 }
 
@@ -70,6 +67,11 @@ nav {
 .header__menu-button-desktop {
   display: none;
   @media (min-width: $xl) {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    padding-left: 0;
+    padding-right: 0;
   }
+  @extend %link-underline;
 }

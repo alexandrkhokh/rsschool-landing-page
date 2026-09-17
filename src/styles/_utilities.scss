@@ -1,3 +1,5 @@
+@use "sass:color";
+
 %flex {
   display: flex;
 }
@@ -21,4 +23,20 @@
 %flex-jcsb-aic {
   @extend %flex-aic;
   justify-content: space-between;
+}
+
+%link-underline {
+  display: inline-flex;
+  box-sizing: border-box;
+  text-decoration: none;
+  border-bottom: 2px solid color-mix(in srgb, var(--text-primary) 0%, transparent);
+  transition: border-color 0.2s ease;
+
+  @media (hover: hover) {
+  &:hover  {
+      border-color: var(--text-primary);
+      padding-bottom: 0;
+    transition: border-color 0.2s ease;
+    }
+  }
 }

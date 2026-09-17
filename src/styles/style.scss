@@ -1,9 +1,24 @@
-@use 'typography';
-@use 'grid' as *;
 @use 'vars' as *;
+@use 'grid' as *;
+@use 'ui' as *;
+@use 'typography';
 @use 'header';
 
 body {
   padding-top: 20px;
   background: var(--bg-body);
+}
+
+#hero {
+  border-radius: 40px;
+  overflow: hidden;
+  padding: 60px 16px;
+
+  @media (min-width: $md) {
+    padding: 100px 60px;
+  }
+
+  @media (min-width: $md) {
+    padding: 100px;
+  }
 }
