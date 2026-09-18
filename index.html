@@ -5,18 +5,78 @@
     <title>Coffee Shop Main Page</title>
 </head>
 <body>
+<!--@include: src/partials/sprites.html-->
 <!--@include: src/partials/header.html-->
 
 <div class="container">
     <section id="hero">
-        <h1>
-            <div class="accent">Enjoy</div> premium coffee at our charming cafe
-        </h1>
 
-        <div class="hero__desc">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</div>
-        <button id="hero-menu-button" class="button-primary">
-            Menu <img src="/coffee-cup.svg" alt="Cup">
-        </button>
+        <div class="hero__top-layer">
+            <h1><span class="accent">Enjoy</span> premium coffee at our charming cafe</h1>
+
+            <p class="hero__desc">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
+            <button id="hero-menu-button" class="button-primary">
+                Menu <svg viewBox="0 0 20 20" width="20" height="20"><use href="#coffee-cup"></use></svg>
+            </button>
+        </div>
+
+        <video muted loop playsinline autoplay poster="/hero-bg.jpg">
+            <source src="/output.webm" type="video/webm" />
+            <source src="/output.mp4" type="video/mp4" />
+        </video>
+    </section>
+    
+    <section id="product-slider">
+        <h2 class="text-center">Choose your <span class="accent">favorite</span> coffee</h2>
+
+        <div class="slider">
+
+            <div class="slides__wrapper">
+                <div class="slide-item">
+                    <img src="/img/products/coffee-slider-1.png" alt="">
+                    <div class="desc">
+                        <h3>S’mores Frappuccino</h3>
+                        <p>This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
+                        <h3 class="price">$5.50</h3>
+                    </div>
+                </div>
+<!--                <div class="slide-item">-->
+<!--                    <img src="/img/products/coffee-slider-2.png" alt="">-->
+<!--                    <div class="desc">-->
+<!--                        <h3></h3>-->
+<!--                        <p></p>-->
+<!--                        <h3 class="price"></h3>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="slide-item">-->
+<!--                    <img src="/img/products/coffee-slider-3.png" alt="">-->
+<!--                    <div class="desc">-->
+<!--                        <h3></h3>-->
+<!--                        <p></p>-->
+<!--                        <h3 class="price"></h3>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+
+            <div class="slider-controls">
+                <button class="slide-control left">
+                    <svg width="60" height="60" viewBox="0 0 60 60"><use href="#arrow-round"></use></svg>
+                </button>
+                <button class="slide-control right">
+                    <svg width="60" height="60" viewBox="0 0 60 60"><use href="#arrow-round"></use></svg>
+                </button>
+                
+                <div class="slider-markers">
+                    <div class="slider-marker accent"></div>
+                    <div class="slider-marker"></div>
+                    <div class="slider-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Resource is <span class="accent">the perfect and cozy place</span> where you can enjoy a variety of hot beverages, relax, catch up with friends, or get some work done.</h2>
     </section>
 </div>
 

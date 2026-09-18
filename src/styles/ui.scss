@@ -1,7 +1,27 @@
 @use 'typography';
 
+button, select {
+  cursor: pointer;
+}
+
 .button-primary {
   background: var(--text-light);
   border: none;
   padding: 20px;
+  border-radius: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0;
+
+  svg {
+    display: none;
+  }
+  @media(hover: hover){
+    &:hover svg {
+      display: inline-block;
+    }
+  }
 }

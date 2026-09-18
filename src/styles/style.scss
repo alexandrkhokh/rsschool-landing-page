@@ -9,16 +9,145 @@ body {
   background: var(--bg-body);
 }
 
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+
 #hero {
+  position: relative;
   border-radius: 40px;
   overflow: hidden;
-  padding: 60px 16px;
 
-  @media (min-width: $md) {
-    padding: 100px 60px;
+  .hero__top-layer {
+    position: absolute;
+    z-index: 20;
+    width: 50%;
+    padding: 60px 0 0 16px;
+    color: var(--text-light);
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (min-width: $md) {
+      padding: 100px 0 0 60px;
+    }
+
+    @media (min-width: $md) {
+      padding: 100px 0 0 100px;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0;
+      color: var(--text-light);
+    }
+
+    .hero__desc {
+      color: var(--text-light);
+    }
+
   }
 
-  @media (min-width: $md) {
-    padding: 100px;
+  video {
+    overflow: hidden;
+    border-radius: 40px;
+    max-width: 100%;
+    position: relative;
+  }
+}
+
+#product-slider {
+  h2 {
+    color: var(--text-dark);
+  }
+
+  .slider {
+    position: relative;
+  }
+  .slides__wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-item {
+    text-align: center;
+    height: 532px;
+    width: 100%;
+    @media (min-width: $md) {
+      height: 640px;
+    }
+
+    img {
+      width: 348px;
+      @media (min-width: $md) {
+        width: 480px;
+      }
+    }
+
+    .desc {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 100%;
+      margin: auto;
+      @media (min-width: $md) {
+        max-width: 480px;
+      }
+
+      h3, p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .slider-controls {
+    position: relative;
+
+    .slide-control {
+      position: absolute;
+      bottom: 320px;
+      background: none;
+      border: none;
+      margin: 0;
+      line-height: 0;
+
+      &.left {
+        transform: rotate(180deg);
+      }
+
+      &.right {
+        right: 0;
+      }
+
+      @media (hover: hover) {
+        &:hover svg {
+          --icon-fill: var(--border-dark);
+          --icon-stroke: var(--text-light);
+        }
+      }
+    }
+
+    .slider-markers {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 12px;
+
+      .slider-marker {
+        width: 40px;
+        height: 4px;
+        background: var(--border-light);
+
+        &.accent {
+          background: var(--border-dark);
+        }
+      }
+    }
   }
 }
