@@ -61,7 +61,7 @@ body {
   }
 }
 
-#product-slider {
+#favorite {
   h2 {
     color: var(--text-dark);
   }
@@ -149,5 +149,16 @@ body {
         }
       }
     }
+  }
+}
+
+#photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  @media (min-width: $xl) {
+    grid-template-columns: repeat(2, 1fr);
+
   }
 }
