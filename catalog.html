@@ -4,9 +4,121 @@
     <!--@include: src/partials/head.html-->
     <title>Coffee Shop Catalog</title>
 </head>
-<body>
-<!--@include: src/partials/header.html?active=catalog-->
+<body class="page-catalog">
+<!--@include: src/partials/sprites.html-->
+<!--@include: src/partials/header.html-->
+<main>
+<div class="container">
+    <h1 class="text-center">
+        Behind each of our cups hides an <span class="accent">amazing surprise</span>
+    </h1>
+    <section id="products">
+        <div class="products__control">
+            <button class="products__category">
+                <span class="product-control__image-wrapper">
+                    <img src="/ui/coffee.png" alt="">
+                </span>
+                <span class="product-control__text">Coffee</span>
+            </button>
+            <button class="products__category">
+                <span class="product-control__image-wrapper">
+                    <img src="/ui/tea.png" alt="">
+                </span>
+                <span class="product-control__text">Tea</span>
+            </button>
+            <button class="products__category">
+                <span class="product-control__image-wrapper">
+                    <img src="/ui/dessert.png" alt="">
+                </span>
+                <span class="product-control__text">Desert</span>
+            </button>
+        </div>
 
+        <div class="products__cards-wrapper">
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-1.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Irish coffee</h3>
+                    <p class="desc">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
+                    <div class="h3">$7.00</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-2.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Kahlua coffee</h3>
+                    <p class="desc">Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</p>
+                    <div class="h3">$7.00</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-3.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Honey raf</h3>
+                    <p class="desc">Espresso with frothed milk, cream and aromatic honey</p>
+                    <div class="h3">$5.50</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-4.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Ice cappuccino</h3>
+                    <p class="desc">Cappuccino with soft thick foam in summer version with ice</p>
+                    <div class="h3">$5.00</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-5.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Espresso</h3>
+                    <p class="desc">Classic black coffee</p>
+                    <div class="h3">$4.50</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-6.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Latte</h3>
+                    <p class="desc">Espresso coffee with the addition of steamed milk and dense milk foam</p>
+                    <div class="h3">$5.50</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-7.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Latte macchiato</h3>
+                    <p class="desc">Espresso with frothed milk and chocolate</p>
+                    <div class="h3">$5.50</div>
+                </div>
+            </div>
+            <div class="product__card">
+                <div class="product__card__image">
+                    <img src="/img/products/coffee-8.jpg" alt="">
+                </div>
+                <div class="product__card__content">
+                    <h3>Coffee with cognac</h3>
+                    <p class="desc">Fragrant black coffee with cognac and whipped cream</p>
+                    <div class="h3">$6.50</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
 <!--@include: src/partials/footer.html-->
 </body>
 </html>

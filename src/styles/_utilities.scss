@@ -36,8 +36,7 @@
   @media (hover: hover) {
   &:hover  {
       border-color: var(--text-primary);
-      padding-bottom: 0;
-    transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease;
     }
   }
 }

@@ -1,0 +1,253 @@
+@use 'vars' as *;
+@use 'grid' as *;
+@use 'ui' as *;
+
+.page-main {
+  #hero {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-bottom: 100px;
+
+    .hero__top-layer {
+      position: absolute;
+      z-index: 20;
+
+      padding: 60px 0 0 16px;
+      color: var(--text-light);
+
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      @media (min-width: $md) {
+        padding: 100px 100px 0 60px;
+      }
+
+      @media (min-width: $xl) {
+        width: 50%;
+        padding: 100px 0 0 100px;
+      }
+
+      h1 {
+        color: var(--text-light);
+      }
+
+      .hero__desc {
+        color: var(--text-light);
+      }
+
+    }
+
+    video {
+      overflow: hidden;
+      border-radius: 40px;
+      position: relative;
+      height: 552px;
+      right: calc(50vw - 50px);
+      @media (min-width: $md) {
+        left: 0;
+        height: 644px;
+      }
+      @media (min-width: $xl) {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  #favorite {
+    margin-bottom: 100px;
+    h2 {
+      color: var(--text-dark);
+    }
+
+    .slider {
+      position: relative;
+    }
+    .slides__wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-item {
+      text-align: center;
+      height: 532px;
+      width: 100%;
+      @media (min-width: $md) {
+        height: 640px;
+      }
+
+      img {
+        width: 348px;
+        @media (min-width: $md) {
+          width: 480px;
+        }
+      }
+
+      .desc {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 100%;
+        margin: auto;
+        @media (min-width: $md) {
+          max-width: 480px;
+        }
+
+        h3, p {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .slider-controls {
+      position: relative;
+
+      .slide-control {
+        position: absolute;
+        bottom: 320px;
+        background: none;
+        border: none;
+        margin: 0;
+        line-height: 0;
+        display: none;
+        @media (min-width: $md) {
+          display: block;
+        }
+
+        &.left {
+          transform: rotate(180deg);
+        }
+
+        &.right {
+          right: 0;
+        }
+
+        @media (hover: hover) {
+          &:hover svg {
+            --icon-fill: var(--border-dark);
+            --icon-stroke: var(--text-light);
+          }
+        }
+      }
+
+      .slider-markers {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+
+        .slider-marker {
+          width: 40px;
+          height: 4px;
+          background: var(--border-light);
+
+          &.accent {
+            background: var(--border-dark);
+          }
+        }
+      }
+    }
+  }
+
+  #photo-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 100px;
+
+    @media (min-width: $xl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .gallery__item {
+      overflow: hidden;
+      border-radius: 20px;
+      line-height: 0;
+      height: 590px;
+
+      @mixin transition {
+        @media (min-width: $md) {
+          background-size: 110%;
+        }
+        transition: background-size .3s;
+        @media (hover: hover) {
+          &:hover{
+            background-size: 100%;
+          }
+        }
+      }
+
+      &.item-2,
+      &.item-3 {
+        display: none;
+        @media (min-width: $xl) {
+          display: block;
+          height: 430px;
+        }
+      }
+
+      &.item-1 {
+        background: url(/img/gallery/about-1.jpg) no-repeat center center;
+        @include transition;
+      }
+
+      &.item-2 {
+        background: url(/img/gallery/about-2.jpg) no-repeat center center;
+        @include transition;
+      }
+
+      &.item-3 {
+        background: url(/img/gallery/about-3.jpg) no-repeat center center;
+        @include transition;
+      }
+
+      &.item-4 {
+        background: url(/img/gallery/about-4.jpg) no-repeat center center;
+        @include transition;
+      }
+    }
+  }
+
+  #mobile-app {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    @media (min-width: $xl) {
+      flex-direction: row;
+      gap: 100px;
+    }
+
+    .mobile-app__content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      h2, p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @media (min-width: $md) {
+          flex-direction: row;
+        }
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
