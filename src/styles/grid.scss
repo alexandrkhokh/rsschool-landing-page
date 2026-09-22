@@ -1,0 +1,15 @@
+@use 'vars' as *;
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: $md) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  @media(min-width: $xl) {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

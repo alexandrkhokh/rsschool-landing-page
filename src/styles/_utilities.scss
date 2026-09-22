@@ -1,0 +1,52 @@
+@use "sass:color";
+@use "vars" as *;
+
+%flex {
+  display: flex;
+}
+
+%flex-jc-center {
+  @extend %flex;
+  justify-content: center;
+}
+
+%flex-aic {
+  @extend %flex;
+  align-items: center;
+}
+
+%flex-center {
+  @extend %flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-jcsb-aic {
+  @extend %flex-aic;
+  justify-content: space-between;
+}
+
+%link-underline {
+  display: inline-flex;
+  box-sizing: border-box;
+  text-decoration: none;
+  border-bottom: 2px solid color-mix(in srgb, var(--text-primary) 0%, transparent);
+  transition: border-color 0.2s ease;
+
+  @media (hover: hover) {
+  &:hover  {
+      border-color: var(--text-primary);
+      transition: border-color 0.2s ease;
+    }
+  }
+}
+
+.d-none {
+  display: none!important;
+}
+
+.d-xl-block {
+  @media (min-width: $xl) {
+    display: block!important;
+  }
+}
