@@ -6,10 +6,17 @@
 @use 'page-main';
 @use 'page-catalog';
 @use 'footer';
+@use 'ui/theme-switcher';
 
 body {
   padding-top: 20px;
   background: var(--bg-body);
+}
+
+body.dark {
+  --bg-body: #403F3D;
+  --text-primary: #E1D4C9;
+  --text-dark: #E1D4C9;
 }
 
 .sprite {

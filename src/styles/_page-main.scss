@@ -37,6 +37,11 @@
         color: var(--text-light);
       }
 
+      .hero-menu-button{
+        --text-primary: #403F3D;
+        color: var(--text-primary);
+      }
+
     }
 
     video {
@@ -149,6 +154,12 @@
           }
         }
       }
+    }
+  }
+
+  #about {
+    h2 {
+      margin-bottom: 40px;
     }
   }
 
