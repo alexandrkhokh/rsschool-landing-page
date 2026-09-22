@@ -33,6 +33,11 @@ footer {
     display: flex;
     flex-direction: row;
     gap: 12px;
+
+    a:hover {
+      --icon-fill: #C1B6AD;
+      --icon-stroke: #403F3D;
+    }
   }
 
   h3 {

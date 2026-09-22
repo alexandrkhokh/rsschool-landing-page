@@ -28,7 +28,8 @@
 
             let theme = localStorage.getItem('theme');
             if(!theme) {
-                localStorage.setItem('theme', 'light');
+                theme = 'light';
+                localStorage.setItem('theme', theme);
             }
             this[theme].classList.add('active');
 
