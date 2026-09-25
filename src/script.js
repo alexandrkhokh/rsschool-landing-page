@@ -58,4 +58,58 @@
         }
     }
     new ThemeSwitcher();
+
+    class createCards {
+        constructor() {
+            this.container = document.getElementById('product-cards');
+            this.fetchData().then(
+                data => this.createProductCards(data)
+            );
+        }
+
+        fetchData = async () => {
+            try {
+                const resp = await fetch('/products.json');
+                if(!resp.ok) {
+                    console.error('Failed to fetch data')
+                }
+                return await resp.json();
+            } catch {
+                throw new Error("Failed to parse data");
+            }
+
+        }
+
+        createProductCards = (data) => {
+            const cardsElements = data.reduce( (acc, cur) => {
+                return acc += `
+                <div class="product__card">
+                    <div class="product__card__image">
+                        <img src="/img/products/${cur.category}-6.jpg" alt="${cur.name}">
+                    </div>
+                    <div class="product__card__content">
+                        <h3>${cur.name}</h3>
+                        <p class="desc">${cur.description}</p>
+                        <div class="h3">$${cur.price}</div>
+                    </div>
+                </div>`
+            }, '');
+            this.container.innerHTML = cardsElements;
+        }
+    }
+
+    new createCards();
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
