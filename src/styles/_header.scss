@@ -57,6 +57,17 @@ nav {
     display: block;
     width: 16px;
     border: 1px solid var(--text-dark);
+    transition: transform 0.3s ease;
+  }
+
+  &.open {
+    .top-line {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .bottom-line {
+      transform: translateY(-4px) rotate(-45deg);
+    }
   }
 
   @media (min-width: $xl) {
@@ -76,3 +87,52 @@ nav {
   @extend %link-underline;
 }
 
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  height: 100dvh;
+  background: var(--bg-body);
+  @extend %flex-center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    align-items: center;
+    gap: 8px;
+    font-size: 32px;
+    line-height: 125%;
+    color: var(--text-primary);
+    @extend %link-underline;
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (min-width: $xl) {
+    display: none;
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
+}

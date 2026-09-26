@@ -29,10 +29,10 @@
     <section id="favorite">
         <h2 class="text-center">Choose your <span class="accent">favorite</span> coffee</h2>
 
-        <div class="slider">
+        <div class="slider" >
 
             <div class="slides__wrapper">
-                <div class="slide-item">
+                <div class="slider-item active">
                     <img src="/img/slider/coffee-slider-1.png" alt="">
                     <div class="desc">
                         <h3>S’mores Frappuccino</h3>
@@ -40,22 +40,22 @@
                         <h3 class="price">$5.50</h3>
                     </div>
                 </div>
-<!--                <div class="slide-item">-->
-<!--                    <img src="/img/slider/coffee-slider-2.png" alt="">-->
-<!--                    <div class="desc">-->
-<!--                        <h3></h3>-->
-<!--                        <p></p>-->
-<!--                        <h3 class="price"></h3>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="slide-item">-->
-<!--                    <img src="/img/slider/coffee-slider-3.png" alt="">-->
-<!--                    <div class="desc">-->
-<!--                        <h3></h3>-->
-<!--                        <p></p>-->
-<!--                        <h3 class="price"></h3>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="slider-item">
+                    <img src="/img/slider/coffee-slider-2.png" alt="">
+                    <div class="desc">
+                        <h3>Caramel Macchiato</h3>
+                        <p>Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</p>
+                        <h3 class="price">$5.00</h3>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="/img/slider/coffee-slider-3.png" alt="">
+                    <div class="desc">
+                        <h3>Ice coffee</h3>
+                        <p>A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.</p>
+                        <h3 class="price">$4.50</h3>
+                    </div>
+                </div>
             </div>
 
             <div class="slider-controls">
@@ -67,7 +67,7 @@
                 </button>
                 
                 <div class="slider-markers">
-                    <div class="slider-marker accent"></div>
+                    <div class="slider-marker active"></div>
                     <div class="slider-marker"></div>
                     <div class="slider-marker"></div>
                 </div>
@@ -114,5 +114,6 @@
 </div>
 </main>
 <!--@include: src/partials/footer.html-->
+<script src="/src/front-page.js" type="module"></script>
 </body>
 </html>

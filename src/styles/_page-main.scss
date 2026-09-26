@@ -75,12 +75,16 @@
       overflow: hidden;
     }
 
-    .slide-item {
+    .slider-item {
       text-align: center;
       height: 532px;
       width: 100%;
+      display: none;
       @media (min-width: $md) {
         height: 640px;
+      }
+      &.active {
+        display: block;
       }
 
       img {
@@ -149,7 +153,7 @@
           height: 4px;
           background: var(--border-light);
 
-          &.accent {
+          &.active {
             background: var(--border-dark);
           }
         }
