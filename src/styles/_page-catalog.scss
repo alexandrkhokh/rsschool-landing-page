@@ -27,6 +27,13 @@
       gap: 8px;
       padding: 8px 16px 8px 8px;
 
+      &.active {
+        background: var(--bg-container);
+        .product-control__text {
+          color: var(--text-light);
+        }
+      }
+
       @media (hover: hover) {
         &:hover {
           background: var(--bg-container);
@@ -65,11 +72,18 @@
     @media (min-width: $xl) {
       grid-template-columns: repeat(4, 310px);
     }
+    
+    &.coffee .coffee,
+    &.tea .tea,
+    &.dessert .dessert {
+      display: block;
+    }
   }
 
   .product__card {
     border: 1px solid var(--border-light);
     border-radius: 40px;
+    display: none;
 
     .product__card__image {
       overflow: hidden;

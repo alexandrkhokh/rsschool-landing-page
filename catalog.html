@@ -14,32 +14,31 @@
         </h1>
         <section id="products">
             <div class="products__control">
-                <button class="products__category">
+                <button class="products__category" id="product-category__coffee">
                 <span class="product-control__image-wrapper">
                     <img src="/ui/coffee.png" alt="">
                 </span>
                     <span class="product-control__text">Coffee</span>
                 </button>
-                <button class="products__category">
+                <button class="products__category" id="product-category__tea">
                 <span class="product-control__image-wrapper">
                     <img src="/ui/tea.png" alt="">
                 </span>
                     <span class="product-control__text">Tea</span>
                 </button>
-                <button class="products__category">
+                <button class="products__category" id="product-category__dessert">
                 <span class="product-control__image-wrapper">
                     <img src="/ui/dessert.png" alt="">
                 </span>
-                    <span class="product-control__text">Desert</span>
+                    <span class="product-control__text">Dessert</span>
                 </button>
             </div>
 
-            <div id="product-cards" class="products__cards-wrapper">
-
-            </div>
+            <div id="product-cards" class="products__cards-wrapper"></div>
         </section>
     </div>
 </main>
 <!--@include: src/partials/footer.html-->
+<script src="/src/catalog.js" type="module"></script>
 </body>
 </html>
