@@ -7,7 +7,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  display: flex;
+  display: none;
   padding: 16px;
   border-radius: 40px;
   width: 100%;
@@ -23,9 +23,44 @@
     width: 800px;
   }
 
+  &.show{
+    display: flex;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal__title {
+    margin-bottom: 12px;
+  }
+
   img {
     border-radius: 40px;
     overflow: hidden;
+  }
+
+  .price__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .info {
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid var(--border-light);
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    p {
+
+    }
   }
 }
 

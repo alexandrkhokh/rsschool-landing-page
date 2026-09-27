@@ -53,32 +53,58 @@
     class Modal {
         constructor(data) {
             this.data = data;
-            this.modal = document.createElement('div');
+            this.modalEl = document.getElementById('modal');
+            this.modalEl.classList.add('show');
 
-            this.overlay = document.createElement('div')
-            this.overlay.classList.add('modal__overlay');
-            this.overlay.addEventListener('click', this.destroy);
+            this.overlayEl = document.createElement('div')
+            this.overlayEl.classList.add('modal__overlay');
+            this.overlayEl.addEventListener('click', this.destroy);
+
+            this.sizes = data.sizes;
+            this.sizesElArray = Object.keys(this.sizes).map(size => {
+                const sizeEl = document.createElement('input')
+                sizeEl.setAttribute('type', 'radio')
+                sizeEl.setAttribute('name', 'size')
+                sizeEl.setAttribute('value', size)
+                return sizeEl
+            });
+
+            this.sizeWrapperEl = this.modalEl.querySelector('.sizes__wrapper');
+            this.sizesElArray.forEach(i => {
+                this.sizeWrapperEl.append(i)
+            })
+
+            this.additives = data.additives;
+
+            this.closeButton = this.modalEl.querySelector('.close');
 
             this.createModal();
         }
 
         createModal = () => {
-            this.modal.classList.add('modal');
-            this.modal.innerHTML = `
-                <div class="col d-none d-md-block">
-                    <img src="/img/products/${this.data.name}.jpg" alt="${this.data.name}">
-                </div>
-                <div class="col">
-                    <h3>${this.data.name}</h3>
-                    <p>${this.data.description}</p>
-                </div>
-            `
-            document.body.append(this.modal)
-            document.body.append(this.overlay)
+
+            const img = this.modalEl.querySelector('img')
+            img.src = `/img/products/${this.data.name}.jpg`
+            img.alt = this.data.name
+
+            this.modalEl.querySelector('.modal__title').textContent = this.data.name
+            this.modalEl.querySelector('p').textContent = this.data.description
+            this.modalEl.querySelector('.price').textContent = `$ ${this.calculatePrice()}`
+
+            this.closeButton.addEventListener('click', this.destroy)
+
+            document.body.append(this.overlayEl)
         }
 
-        destroy() {
-            
+        calculatePrice = () => {
+            let price = this.data.price;
+            return price;
+        }
+
+        destroy = () => {
+            this.overlayEl.removeEventListener('click', this.destroy);
+            this.modalEl.classList.remove('show')
+            this.overlayEl.remove()
         }
     }
 
