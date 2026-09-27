@@ -3,8 +3,14 @@
         constructor() {
             this.container = document.getElementById('product-cards');
             this.fetchData().then(
-                data => this.createProductCards(data)
+                data => {
+                    this.createProductCards(data);
+                    document.querySelectorAll('[data-modal]').forEach( a => {
+                        a.addEventListener('click', (event) => this.openModal(event, data))
+                    } )
+                }
             );
+
         }
 
         fetchData = async () => {
@@ -17,14 +23,19 @@
             } catch {
                 throw new Error("Failed to parse data");
             }
+        }
 
+        openModal = (event, data) => {
+            event.preventDefault();
+            const target = event.target.closest('a').dataset.modal
+
+            new Modal(...data.filter(i => i.name === target));
         }
 
         createProductCards = (data) => {
-
-            const cardsElements = data.reduce( (acc, cur) => {
+            this.container.innerHTML = data.reduce((acc, cur) => {
                 return acc += `
-                <div class="product__card ${cur.category}">
+                <a href="#" class="product__card ${cur.category}" data-modal="${cur.name}">
                     <div class="product__card__image">
                         <img src="/img/products/${cur.name}.jpg" alt="${cur.name}">
                     </div>
@@ -33,13 +44,43 @@
                         <p class="desc">${cur.description}</p>
                         <div class="h3">$${cur.price}</div>
                     </div>
-                </div>`
+                </a>`
             }, '');
-            this.container.innerHTML = cardsElements;
         }
     }
-
     new createCards();
+
+    class Modal {
+        constructor(data) {
+            this.data = data;
+            this.modal = document.createElement('div');
+
+            this.overlay = document.createElement('div')
+            this.overlay.classList.add('modal__overlay');
+            this.overlay.addEventListener('click', this.destroy);
+
+            this.createModal();
+        }
+
+        createModal = () => {
+            this.modal.classList.add('modal');
+            this.modal.innerHTML = `
+                <div class="col d-none d-md-block">
+                    <img src="/img/products/${this.data.name}.jpg" alt="${this.data.name}">
+                </div>
+                <div class="col">
+                    <h3>${this.data.name}</h3>
+                    <p>${this.data.description}</p>
+                </div>
+            `
+            document.body.append(this.modal)
+            document.body.append(this.overlay)
+        }
+
+        destroy() {
+            
+        }
+    }
 
     class ProductCardSwitcher {
         category = ['coffee', 'tea', 'dessert'];

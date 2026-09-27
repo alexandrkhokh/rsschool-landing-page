@@ -84,6 +84,7 @@
     border: 1px solid var(--border-light);
     border-radius: 40px;
     display: none;
+    text-decoration: none;
 
     .product__card__image {
       overflow: hidden;
@@ -95,6 +96,8 @@
         max-height: 100%;
       }
     }
+
+
 
     .product__card__content {
       padding: 20px;

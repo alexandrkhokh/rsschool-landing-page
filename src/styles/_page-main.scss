@@ -73,6 +73,7 @@
     .slides__wrapper {
       position: relative;
       overflow: hidden;
+      touch-action: pan-y;
     }
 
     .slider-item {
