@@ -60,29 +60,47 @@
             this.overlayEl.classList.add('modal__overlay');
             this.overlayEl.addEventListener('click', this.destroy);
 
-            this.sizes = data.sizes;
-            this.sizesElArray = Object.entries(this.sizes).map(([key, { size }], i) => {
+
+
+            this.createModal();
+        }
+
+        createModal = () => {
+
+            this.sizes = this.data.sizes;
+            this.sizesElArray = Object.entries(this.sizes).map(([key, value], i) => {
                 const label = document.createElement('label')
-                const sizeEl = document.createElement('input')
-                sizeEl.setAttribute('type', 'radio')
-                sizeEl.setAttribute('name', 'size')
-                sizeEl.setAttribute('value', key)
-                sizeEl.checked = i === 0
-                label.append(sizeEl, `${key.toUpperCase()} ${size}`)
+                const input = document.createElement('input')
+                input.type = 'radio';
+                input.name = 'size';
+                input.value = key;
+                input.checked = i === 0
+                input.dataset.price = value['add-price'];
+                const sizeMark = document.createElement('span');
+                sizeMark.textContent = key.toUpperCase();
+                label.append(input, sizeMark, value.size)
                 return label
             });
 
             this.sizesEl = this.modalEl.querySelector('.sizes');
             this.sizesEl.replaceChildren(...this.sizesElArray);
 
-            this.additives = data.additives;
+            this.additivesEl = this.modalEl.querySelector('.additives')
+            this.additives = this.data.additives;
+            this.additivesElArray = this.additives.map((add, i) => {
+                const label = document.createElement('label')
+                const input = document.createElement('input')
+                input.type = 'checkbox'
+                input.name = 'additives'
+                input.value = add['add-price']
+                const additiveMark = document.createElement('span');
+                additiveMark.textContent = i + 1;
+                label.append(input, additiveMark, add.name);
+                return label;
+            })
+            this.additivesEl.replaceChildren(...this.additivesElArray);
 
             this.closeButton = this.modalEl.querySelector('.close');
-
-            this.createModal();
-        }
-
-        createModal = () => {
 
             const img = this.modalEl.querySelector('img')
             img.src = `/img/products/${this.data.name}.jpg`
