@@ -61,18 +61,19 @@
             this.overlayEl.addEventListener('click', this.destroy);
 
             this.sizes = data.sizes;
-            this.sizesElArray = Object.keys(this.sizes).map(size => {
+            this.sizesElArray = Object.entries(this.sizes).map(([key, { size }], i) => {
+                const label = document.createElement('label')
                 const sizeEl = document.createElement('input')
                 sizeEl.setAttribute('type', 'radio')
                 sizeEl.setAttribute('name', 'size')
-                sizeEl.setAttribute('value', size)
-                return sizeEl
+                sizeEl.setAttribute('value', key)
+                sizeEl.checked = i === 0
+                label.append(sizeEl, `${key.toUpperCase()} ${size}`)
+                return label
             });
 
-            this.sizeWrapperEl = this.modalEl.querySelector('.sizes__wrapper');
-            this.sizesElArray.forEach(i => {
-                this.sizeWrapperEl.append(i)
-            })
+            this.sizesEl = this.modalEl.querySelector('.sizes');
+            this.sizesEl.replaceChildren(...this.sizesElArray);
 
             this.additives = data.additives;
 
