@@ -1,10 +1,13 @@
 (function () {
+    const VISIBLE_CARDS_MOBILE = 4;
+
     class createCards {
         constructor() {
             this.container = document.getElementById('product-cards');
             this.fetchData().then(
                 data => {
                     this.createProductCards(data);
+                    switcher.updateMoreButton();
                     document.querySelectorAll('[data-modal]').forEach( a => {
                         a.addEventListener('click', (event) => this.openModal(event, data))
                     } )
@@ -33,9 +36,12 @@
         }
 
         createProductCards = (data) => {
+            const categoryCount = {};
             this.container.innerHTML = data.reduce((acc, cur) => {
+                categoryCount[cur.category] = (categoryCount[cur.category] ?? 0) + 1;
+                const extraClass = categoryCount[cur.category] > VISIBLE_CARDS_MOBILE ? 'product__card--extra' : '';
                 return acc += `
-                <a href="#" class="product__card ${cur.category}" data-modal="${cur.name}">
+                <a href="#" class="product__card ${cur.category} ${extraClass}" data-modal="${cur.name}">
                     <div class="product__card__image">
                         <img src="/img/products/${cur.name}.jpg" alt="${cur.name}">
                     </div>
@@ -48,8 +54,6 @@
             }, '');
         }
     }
-    new createCards();
-
     class Modal {
         constructor(data) {
             this.data = data
@@ -143,6 +147,8 @@
             });
 
             this.productCards = document.getElementById('product-cards');
+            this.moreButton = document.getElementById('products-more');
+            this.moreButton.addEventListener('click', this.showMore);
 
             this[this.activeCategory].classList.add('active');
             this.productCards.classList.add(this.activeCategory);
@@ -150,10 +156,21 @@
 
         toggleCategory = (event) => {
             this[this.activeCategory].classList.remove('active');
-            this.productCards.classList.remove(this.activeCategory);
+            this.productCards.classList.remove(this.activeCategory, 'expanded');
             this.activeCategory = event.target.closest('button').id.replace('product-category__', '');
             this[this.activeCategory].classList.add('active');
             this.productCards.classList.add(this.activeCategory);
+            this.updateMoreButton();
+        }
+
+        showMore = () => {
+            this.productCards.classList.add('expanded');
+            this.updateMoreButton();
+        }
+
+        updateMoreButton = () => {
+            const hasHiddenCards = this.productCards.querySelector(`.product__card--extra.${this.activeCategory}`) !== null;
+            this.moreButton.hidden = !hasHiddenCards || this.productCards.classList.contains('expanded');
         }
 
         destroy() {
@@ -163,5 +180,6 @@
         }
     }
 
-    new ProductCardSwitcher();
+    const switcher = new ProductCardSwitcher();
+    new createCards();
 })()

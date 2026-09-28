@@ -62,7 +62,8 @@
 
   .products__cards-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 340px);
+    justify-content: center;
     gap: 40px;
 
     @media (min-width: $md) {
@@ -77,6 +78,40 @@
     &.tea .tea,
     &.dessert .dessert {
       display: block;
+    }
+
+    @media (max-width: $md - 1px) {
+      &:not(.expanded) .product__card.product__card--extra {
+        display: none;
+      }
+    }
+  }
+
+  .products__more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 40px auto 0;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--border-dark);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background: var(--border-light);
+      }
+    }
+
+    @media (min-width: $md) {
+      display: none;
     }
   }
 
