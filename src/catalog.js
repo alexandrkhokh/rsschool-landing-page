@@ -52,47 +52,47 @@
 
     class Modal {
         constructor(data) {
-            this.data = data;
-            this.modalEl = document.getElementById('modal');
-            this.modalEl.classList.add('show');
+            this.data = data
+            this.modalEl = document.getElementById('modal')
+            this.modalEl.classList.add('show')
+
+            this.additivesEl = this.modalEl.querySelector('.additives')
+            this.sizesEl = this.modalEl.querySelector('.sizes')
 
             this.overlayEl = document.createElement('div')
-            this.overlayEl.classList.add('modal__overlay');
-            this.overlayEl.addEventListener('click', this.destroy);
+            this.overlayEl.classList.add('modal__overlay')
+            this.overlayEl.addEventListener('click', this.destroy)
 
+            this.priceEl = this.modalEl.querySelector('.price')
 
-
-            this.createModal();
+            this.createModal()
         }
 
         createModal = () => {
 
-            this.sizes = this.data.sizes;
-            this.sizesElArray = Object.entries(this.sizes).map(([key, value], i) => {
+            this.sizesElArray = Object.entries(this.data.sizes).map(([key, value], i) => {
                 const label = document.createElement('label')
                 const input = document.createElement('input')
-                input.type = 'radio';
-                input.name = 'size';
-                input.value = key;
+                input.type = 'radio'
+                input.name = 'size'
+                input.value = value['add-price']
                 input.checked = i === 0
-                input.dataset.price = value['add-price'];
-                const sizeMark = document.createElement('span');
-                sizeMark.textContent = key.toUpperCase();
+                input.addEventListener('change', this.calculatePrice)
+                const sizeMark = document.createElement('span')
+                sizeMark.textContent = key.toUpperCase()
                 label.append(input, sizeMark, value.size)
                 return label
             });
 
-            this.sizesEl = this.modalEl.querySelector('.sizes');
             this.sizesEl.replaceChildren(...this.sizesElArray);
 
-            this.additivesEl = this.modalEl.querySelector('.additives')
-            this.additives = this.data.additives;
-            this.additivesElArray = this.additives.map((add, i) => {
+            this.additivesElArray = this.data.additives.map((add, i) => {
                 const label = document.createElement('label')
                 const input = document.createElement('input')
                 input.type = 'checkbox'
                 input.name = 'additives'
                 input.value = add['add-price']
+                input.addEventListener('change', this.calculatePrice)
                 const additiveMark = document.createElement('span');
                 additiveMark.textContent = i + 1;
                 label.append(input, additiveMark, add.name);
@@ -108,7 +108,7 @@
 
             this.modalEl.querySelector('.modal__title').textContent = this.data.name
             this.modalEl.querySelector('p').textContent = this.data.description
-            this.modalEl.querySelector('.price').textContent = `$ ${this.calculatePrice()}`
+            this.priceEl.textContent = `$ ${this.data.price}`
 
             this.closeButton.addEventListener('click', this.destroy)
 
@@ -117,6 +117,11 @@
 
         calculatePrice = () => {
             let price = this.data.price;
+            const options = this.modalEl.querySelectorAll('.modal input')
+            const checked = Array.from(options).filter(i => i.checked === true)
+            const adds = checked.reduce((acc, cur) => acc += Number(cur.value), 0)
+            const total = Number(price) + adds;
+            this.priceEl.textContent = `$ ${total.toFixed(2)}`
             return price;
         }
 
