@@ -118,6 +118,16 @@
   }
 }
 
+body.dark .modal .close {
+  @media (hover: hover) {
+    &:hover {
+      background: var(--text-light);
+      border-color: var(--text-light);
+      color: var(--bg-body);
+    }
+  }
+}
+
 .modal__overlay {
   position: fixed;
   width: 100vw;

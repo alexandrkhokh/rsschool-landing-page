@@ -115,8 +115,15 @@
             this.priceEl.textContent = `$ ${this.data.price}`
 
             this.closeButton.addEventListener('click', this.destroy)
+            document.addEventListener('keydown', this.keydownHandler)
 
             document.body.append(this.overlayEl)
+        }
+
+        keydownHandler = (event) => {
+            if (event.key === 'Escape') {
+                this.destroy()
+            }
         }
 
         calculatePrice = () => {
@@ -131,6 +138,8 @@
 
         destroy = () => {
             this.overlayEl.removeEventListener('click', this.destroy);
+            this.closeButton.removeEventListener('click', this.destroy);
+            document.removeEventListener('keydown', this.keydownHandler);
             this.modalEl.classList.remove('show')
             this.overlayEl.remove()
         }
@@ -173,7 +182,7 @@
             this.moreButton.hidden = !hasHiddenCards || this.productCards.classList.contains('expanded');
         }
 
-        destroy() {
+        destroy = () => {
             category.forEach( i => {
                 this[i].removeEventListener('click', this.toggleCategory)
             });

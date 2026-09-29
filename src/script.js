@@ -9,6 +9,7 @@
             this.mobileMenuButton.addEventListener('click', this.menuToggleHandler);
             this.menu.addEventListener('click', this.linkClickHandler);
             window.addEventListener('resize', this.resizeHandler);
+            document.addEventListener('keydown', this.keydownHandler);
         }
 
         isOpen() {
@@ -18,13 +19,40 @@
         open() {
             this.menu.classList.add('open');
             this.mobileMenuButton.classList.add('open');
-            document.body.classList.add('no-scroll');
+            this.lockScroll();
         }
 
         close() {
             this.menu.classList.remove('open');
             this.mobileMenuButton.classList.remove('open');
+            this.unlockScroll();
+        }
+
+        // position: fixed вместо overflow: hidden — иначе iOS Safari продолжает скроллить страницу
+        lockScroll() {
+            this.scrollY = window.scrollY;
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.top = `-${this.scrollY}px`;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            document.body.classList.add('no-scroll');
+        }
+
+        unlockScroll() {
+            if (!document.body.classList.contains('no-scroll')) {
+                return;
+            }
             document.body.classList.remove('no-scroll');
+            document.body.style.top = '';
+            document.body.style.paddingRight = '';
+            // instant, чтобы html { scroll-behavior: smooth } не анимировал возврат позиции
+            window.scrollTo({ top: this.scrollY, behavior: 'instant' });
+        }
+
+        keydownHandler = (event) => {
+            if (event.key === 'Escape' && this.isOpen()) {
+                this.close();
+                this.mobileMenuButton.focus();
+            }
         }
 
         menuToggleHandler = () => {
@@ -47,6 +75,7 @@
             this.mobileMenuButton.removeEventListener('click', this.menuToggleHandler);
             this.menu.removeEventListener('click', this.linkClickHandler);
             window.removeEventListener('resize', this.resizeHandler);
+            document.removeEventListener('keydown', this.keydownHandler);
         }
     }
     new MobileMenu();

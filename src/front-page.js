@@ -37,25 +37,25 @@
             deltaX < 0 ? this.nextSlide() : this.prevSlide();
         }
 
-        nextSlide = () => {
-            this.activeSlide = (this.activeSlide < this.slides.length - 1) ?
-                this.activeSlide + 1 : 0;
+        goToSlide(index) {
+            this.activeSlide = index;
             [...this.slides, ...this.markers].forEach(slide => {
                 slide.classList.remove('active');
             })
 
             this.slides[this.activeSlide].classList.add('active');
             this.markers[this.activeSlide].classList.add('active');
+            this.slidesWrapper.style.setProperty('--active-slide', this.activeSlide);
+        }
+
+        nextSlide = () => {
+            this.goToSlide((this.activeSlide < this.slides.length - 1) ?
+                this.activeSlide + 1 : 0);
         }
 
         prevSlide = () => {
-            this.activeSlide = (this.activeSlide === 0) ?
-                this.slides.length - 1 : this.activeSlide - 1;
-            [...this.slides, ...this.markers].forEach(slide => {
-                slide.classList.remove('active');
-            })
-            this.slides[this.activeSlide].classList.add('active')
-            this.markers[this.activeSlide].classList.add('active')
+            this.goToSlide((this.activeSlide === 0) ?
+                this.slides.length - 1 : this.activeSlide - 1);
         }
     }
     new productSlider();
