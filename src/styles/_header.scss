@@ -34,7 +34,7 @@ header {
 nav {
   display: none;
   
-  @media (min-width: $xl) {
+  @media (min-width: #{$md + 1}) {
     display: block;
 
     ul {
@@ -76,14 +76,14 @@ nav {
     }
   }
 
-  @media (min-width: $xl) {
+  @media (min-width: #{$md + 1}) {
     display: none;
   }
 }
 
 .header__menu-button-desktop {
   display: none;
-  @media (min-width: $xl) {
+  @media (min-width: #{$md + 1}) {
     display: flex;
     align-items: flex-start;
     gap: 5px;
@@ -134,7 +134,7 @@ nav {
     height: 40px;
   }
 
-  @media (min-width: $xl) {
+  @media (min-width: #{$md + 1}) {
     display: none;
   }
 }
