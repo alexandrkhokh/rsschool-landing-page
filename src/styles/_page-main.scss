@@ -71,16 +71,25 @@
       position: relative;
     }
     .slides__wrapper {
+      --active-slide: 0;
       position: relative;
+      display: flex;
       overflow: hidden;
+      touch-action: pan-y;
     }
 
-    .slide-item {
+    .slider-item {
+      flex: 0 0 100%;
       text-align: center;
       height: 532px;
       width: 100%;
+      transform: translateX(calc(var(--active-slide) * -100%));
+      transition: transform 0.6s ease-in-out;
       @media (min-width: $md) {
         height: 640px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
       }
 
       img {
@@ -148,8 +157,9 @@
           width: 40px;
           height: 4px;
           background: var(--border-light);
+          transition: background 0.6s ease-in-out;
 
-          &.accent {
+          &.active {
             background: var(--border-dark);
           }
         }

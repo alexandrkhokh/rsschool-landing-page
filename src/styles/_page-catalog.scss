@@ -27,6 +27,13 @@
       gap: 8px;
       padding: 8px 16px 8px 8px;
 
+      &.active {
+        background: var(--bg-container);
+        .product-control__text {
+          color: var(--text-light);
+        }
+      }
+
       @media (hover: hover) {
         &:hover {
           background: var(--bg-container);
@@ -55,7 +62,8 @@
 
   .products__cards-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 340px);
+    justify-content: center;
     gap: 40px;
 
     @media (min-width: $md) {
@@ -65,11 +73,53 @@
     @media (min-width: $xl) {
       grid-template-columns: repeat(4, 310px);
     }
+    
+    &.coffee .coffee,
+    &.tea .tea,
+    &.dessert .dessert {
+      display: block;
+    }
+
+    @media (max-width: $md - 1px) {
+      &:not(.expanded) .product__card.product__card--extra {
+        display: none;
+      }
+    }
+  }
+
+  .products__more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 40px auto 0;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--border-dark);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background: var(--border-light);
+      }
+    }
+
+    @media (min-width: $md) {
+      display: none;
+    }
   }
 
   .product__card {
     border: 1px solid var(--border-light);
     border-radius: 40px;
+    display: none;
+    text-decoration: none;
 
     .product__card__image {
       overflow: hidden;
@@ -81,6 +131,8 @@
         max-height: 100%;
       }
     }
+
+
 
     .product__card__content {
       padding: 20px;

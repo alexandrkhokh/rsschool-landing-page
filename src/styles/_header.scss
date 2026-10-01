@@ -3,7 +3,7 @@
 
 header {
   position: relative;
-  z-index: 100;
+  z-index: 10;
   margin-bottom: 20px;
 
   button {
@@ -19,6 +19,12 @@ header {
 
 .header__wrapper {
   @extend %flex-jcsb-aic;
+
+  .header__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
 }
 
 .header__logo-link {
@@ -28,7 +34,7 @@ header {
 nav {
   display: none;
   
-  @media (min-width: $xl) {
+  @media (min-width: #{$md + 1}) {
     display: block;
 
     ul {
@@ -57,16 +63,27 @@ nav {
     display: block;
     width: 16px;
     border: 1px solid var(--text-dark);
+    transition: transform 0.3s ease;
   }
 
-  @media (min-width: $xl) {
+  &.open {
+    .top-line {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .bottom-line {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+  }
+
+  @media (min-width: #{$md + 1}) {
     display: none;
   }
 }
 
 .header__menu-button-desktop {
   display: none;
-  @media (min-width: $xl) {
+  @media (min-width: #{$md + 1}) {
     display: flex;
     align-items: flex-start;
     gap: 5px;
@@ -76,3 +93,55 @@ nav {
   @extend %link-underline;
 }
 
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  height: 100dvh;
+  background: var(--bg-body);
+  @extend %flex-center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    align-items: center;
+    gap: 8px;
+    font-size: 32px;
+    line-height: 125%;
+    color: var(--text-primary);
+    @extend %link-underline;
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (min-width: #{$md + 1}) {
+    display: none;
+  }
+}
+
+body.no-scroll {
+  position: fixed;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}

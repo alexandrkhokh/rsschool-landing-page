@@ -26,3 +26,16 @@ button, select {
     }
   }
 }
+
+.button-secondary {
+  border: 1px solid var(--border-dark);
+  background: transparent;
+  border-radius: 100px;
+  padding: 10px;
+  @media(hover: hover){
+    &:hover {
+      background: var(--bg-backgrop);
+      color: var(--text-light);
+    }
+  }
+}

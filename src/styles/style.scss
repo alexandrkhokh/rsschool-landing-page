@@ -7,6 +7,7 @@
 @use 'page-catalog';
 @use 'footer';
 @use 'ui/theme-switcher';
+@use 'ui/modal';
 
 html {
   scroll-behavior: smooth;

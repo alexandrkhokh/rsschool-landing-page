@@ -45,6 +45,12 @@
   display: none!important;
 }
 
+.d-md-block {
+  @media (min-width: $md) {
+    display: block!important;
+  }
+}
+
 .d-xl-block {
   @media (min-width: $xl) {
     display: block!important;
